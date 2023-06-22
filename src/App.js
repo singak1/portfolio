@@ -1,10 +1,21 @@
-import './App.css';
+import Navbar from "./Components/Navbar";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import Contact from "./Pages/Contact";
 
 function App() {
   return (
-    <div className="App">
-      <h2>Akash's Porfoilo</h2>
-    </div>
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <Routes>
+            <Route path="/" element={ <Home /> } />
+            <Route path="/contact" element={ <Contact /> } />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
