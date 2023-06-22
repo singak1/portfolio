@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
-body {
+* {
   margin: 0;
   font-family: "Quicksand";
-  background-color: #27374D;
-  color:#DDE6ED
+  background-color: #17223B;
+  color:#FF6768
 }
 
 code {
@@ -11,21 +11,28 @@ code {
     monospace;
 }
 
+.content {
+  margin: 40px auto;
+  padding: 15px;
+  text-align: center;
+}
+
 .nav {
-  background-color:#526D82 ;
+  background-color:#263859 ;
   padding: 20px;
   display: flex;
   align-items: center;
   margin: 0 auto;
-  border-bottom: 1px solid #9DB2BF;
+  border-bottom: 1px solid #6B778D;
 }
 
 .nav a {
   text-decoration: none;
-  color:#DDE6ED;
+  color:#FF6768;
   margin-left: 16px;
+  background: none;
 }
 
 .nav a:hover {
-  color: #9DB2BF;
+  color: #6B778D;
 }

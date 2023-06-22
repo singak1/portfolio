@@ -1,12 +1,19 @@
 import Navbar from "./Components/Navbar";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./Pages/Home";
+import Contact from "./Pages/Contact";
 
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
-        <h2>Akash's Porfoilo</h2>
+        <div className="content">
+          <Routes>
+            <Route path="/" element={ <Home /> } />
+            <Route path="/contact" element={ <Contact /> } />
+          </Routes>
+        </div>
       </div>
     </Router>
   );
