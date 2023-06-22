@@ -36,3 +36,51 @@ code {
 .nav a:hover {
   color: #6B778D;
 }
+
+.home h2{
+  font-size: xx-large;
+}
+
+.education {
+  padding: 10px;
+  margin: 20px;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.education h4 {
+  font-size: x-large;
+}
+
+.education p{
+  padding: 5px;
+}
+
+.projects {
+  padding: 10px;
+  margin: 20px;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects h4{
+  font-size: x-large;
+}
+
+.projects h6{
+  font-size: large;
+  padding: 5px;
+}
+
+.skills {
+  padding: 10px;
+}
+
+.skills svg{
+  margin-left: 15px;
+  width: 25px;
+  transform: scale(2);
+}
+
