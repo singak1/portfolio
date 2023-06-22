@@ -84,3 +84,15 @@ code {
   transform: scale(2);
 }
 
+.about-me {
+  padding: 20px;
+}
+
+.about-me h4{
+  font-size: x-large;
+}
+
+.about-me p{
+  padding: 5px;
+}
+
