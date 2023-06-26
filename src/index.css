@@ -3,7 +3,8 @@
   margin: 0;
   font-family: "Quicksand";
   background-color: #17223B;
-  color:#FF6768
+  color:#FF6768;
+  --toastify-color-error: #17223B;
 }
 
 code {
@@ -96,3 +97,34 @@ code {
   padding: 5px;
 }
 
+.contact {
+  padding: 5px;
+}
+
+.contact label {
+  font-size: larger;
+  padding: 5px
+}
+.contact input {
+  background-color:#263859;
+  font-size: large;
+  padding: 5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.contact textarea {
+  background-color:#263859;
+  font-size: large;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.contact button {
+  background-color:#263859;
+  font-size: large;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
