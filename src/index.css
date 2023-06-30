@@ -18,6 +18,10 @@ code {
   text-align: center;
 }
 
+h2 {
+  font-size: xx-large;
+}
+
 .nav {
   background-color:#263859 ;
   padding: 20px;
@@ -100,6 +104,10 @@ code {
 .contact {
   padding: 5px;
   align-content: center;
+}
+
+.contact form{
+  margin-top: 15px;
 }
 
 .contact label {

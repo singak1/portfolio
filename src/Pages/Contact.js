@@ -7,21 +7,18 @@ const Contact = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [error, setError] = useState(false);
+
+    const formValidation = () => {
+        let error = true;
+        if(name.length >= 1 && email.length >= 1 && message.length >= 1) {
+            error = false
+        }
+        return error;
+    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(name.length < 1 ) {
-            setError('true');
-            console.log('trueee')
-        }
-        if(email.length < 1) {
-            setError('true')
-        }
-        if(message.length < 1) {
-            setError('true');
-        }
-        
+        let error = formValidation();
         if(error) {
             toast.error('Please fill out the all the components', {
                 position: "bottom-center",
@@ -35,19 +32,17 @@ const Contact = () => {
                 });
         }
         else {
-        const contactData = {name, email, message}
-        console.log(contactData);
-        }
-
-        setEmail('');
-        setMessage('');
-        setName('');
-        setError('false')
-        
+            const contactData = {name, email, message}
+            console.log(contactData);
+            setEmail('');
+            setMessage('');
+            setName('');
+        }        
     }
 
     return (
         <div className="contact" onSubmit={handleSubmit}>
+            <h2>Contact Me</h2>
             <form>
                 <label>Name</label>
                 <input type="text" 
