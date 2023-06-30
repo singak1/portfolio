@@ -99,9 +99,11 @@ code {
 
 .contact {
   padding: 5px;
+  align-content: center;
 }
 
 .contact label {
+  display: block;
   font-size: larger;
   padding: 5px
 }
@@ -119,6 +121,9 @@ code {
   padding: 5px;
   border-radius: 10px;
   margin-bottom: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact button {

@@ -50,24 +50,18 @@ const Contact = () => {
         <div className="contact" onSubmit={handleSubmit}>
             <form>
                 <label>Name</label>
-                <br />
                 <input type="text" 
                     onChange={(e) => setName(e.target.value)}
                     value={name}                />
-                <br />
                 <label>Email </label>
-                <br />
                 <input type="email" 
                     onChange={(e) => setEmail(e.target.value)}
                     value={email}                />
-                <br />
                 <label>Message </label>
-                <br />
                 <textarea 
                     onChange={(e) => setMessage(e.target.value)}
                     value={message}
                 />
-                <br />
                 <button >Submit</button>
                 <div className="toast">
                 <ToastContainer />
