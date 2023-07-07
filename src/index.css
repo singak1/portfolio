@@ -2,9 +2,7 @@
 * {
   margin: 0;
   font-family: "Quicksand";
-  background-color: #17223B;
-  color:#FF6768;
-  --toastify-color-error: #17223B;
+  /*--toastify-color-error: #17223B;*/
 }
 
 code {
@@ -18,87 +16,9 @@ code {
   text-align: center;
 }
 
-h2 {
-  font-size: xx-large;
-}
 
-.nav {
-  background-color:#263859 ;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  border-bottom: 1px solid #6B778D;
-}
-
-.nav a {
-  text-decoration: none;
-  color:#FF6768;
-  margin-left: 16px;
-  background: none;
-}
-
-.nav a:hover {
-  color: #6B778D;
-}
-
-.home h2{
-  font-size: xx-large;
-}
-
-.education {
-  padding: 10px;
-  margin: 20px;
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.education h4 {
-  font-size: x-large;
-}
-
-.education p{
-  padding: 5px;
-}
-
-.projects {
-  padding: 10px;
-  margin: 20px;
-  max-width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.projects h4{
-  font-size: x-large;
-}
-
-.projects h6{
-  font-size: large;
-  padding: 5px;
-}
-
-.skills {
-  padding: 10px;
-}
-
-.skills svg{
-  margin-left: 15px;
-  width: 25px;
-  transform: scale(2);
-}
-
-.about-me {
-  padding: 20px;
-}
-
-.about-me h4{
-  font-size: x-large;
-}
-
-.about-me p{
-  padding: 5px;
+a:hover {
+  color: slategray;
 }
 
 .contact {
@@ -116,15 +36,15 @@ h2 {
   padding: 5px
 }
 .contact input {
-  background-color:#263859;
   font-size: large;
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 10px;
+  min-width: 300px;
 }
 
 .contact textarea {
-  background-color:#263859;
+
   font-size: large;
   padding: 5px;
   border-radius: 10px;
@@ -132,10 +52,11 @@ h2 {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  min-width: 300px;
+  min-height: 100px;
 }
 
 .contact button {
-  background-color:#263859;
   font-size: large;
   padding: 5px;
   border-radius: 10px;

@@ -1,19 +1,14 @@
 import { SiReact, SiNodedotjs, SiMongodb, SiExpress } from "react-icons/si"
-import { Tooltip } from "react-tooltip"
+import { Flex, Icon, Tooltip } from "@chakra-ui/react"
 
 const Skills = () => {
     return(
-        <div className="skills">
-            <SiExpress data-tooltip-id="express-tooltip" data-tooltip-content="Express" data-tooltip-place="bottom"/>
-            <SiMongodb data-tooltip-id="mongo-tooltip" data-tooltip-content="MongoDB" data-tooltip-place="bottom"/>
-            <SiNodedotjs data-tooltip-id="nodejs-tooltip" data-tooltip-content="Node JS" data-tooltip-place="bottom"/>
-            <SiReact data-tooltip-id="react-tooltip" data-tooltip-content="React" data-tooltip-place="bottom"/>
-            <Tooltip id="express-tooltip" />
-            <Tooltip id="mongo-tooltip" />
-            <Tooltip id="nodejs-tooltip" />
-            <Tooltip id="react-tooltip" />
-        </div>
-        
+        <Flex maxWidth='max-content' alignContent='space-between' margin='auto'>
+            <Tooltip label='Express'><span><Icon as={SiExpress} boxSize={8} mr={3}/></span></Tooltip>
+            <Tooltip label='Mongo DB'><span><Icon as={SiMongodb} boxSize={8} mr={3}/></span></Tooltip>
+            <Tooltip label='NodeJS'><span><Icon as={SiNodedotjs} boxSize={8} mr={3}/></span></Tooltip>
+            <Tooltip label='React'><span><Icon as={SiReact} boxSize={8} mr={3}/></span></Tooltip>
+        </Flex>
     )
 }
 
