@@ -1,78 +1,90 @@
 import { useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
+import  {   FormControl, 
+            FormLabel, 
+            FormErrorMessage, 
+            Input, 
+            Textarea, 
+            Heading, 
+            Button,
+            useToast
+        } from "@chakra-ui/react";
 
 const Contact = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
-    const [error, setError] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const toast = useToast();
 
-    const handleSubmit = (e) => {
+    const formValidation = () => {
+        let error = true;
+        if(name.length >= 1 && email.length >= 1 && message.length >= 1) {
+            error = false
+        }
+        return error;
+    }
+
+    const handleSubmit = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
-        if(name.length < 1 ) {
-            setError('true');
-            console.log('trueee')
-        }
-        if(email.length < 1) {
-            setError('true')
-        }
-        if(message.length < 1) {
-            setError('true');
-        }
-        
+        let error = formValidation();
         if(error) {
-            toast.error('Please fill out the all the components', {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: false,
-                progress: undefined,
-                theme: "colored",
-                });
+            toast({
+                title: 'Incomplete Form.',
+                description: "Please fill out all the inputs!",
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+            })
         }
         else {
-        const contactData = {name, email, message}
-        console.log(contactData);
+            await new Promise( r => setTimeout(r, 6000));
+            toast({
+                size:'lg',
+                title: "Thank you for your inquiry",
+                description: "I will get back to you at the specified email ASAP",
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+            })
+            const contactData = {name, email, message}
+            console.log(contactData);
+            setEmail('');
+            setMessage('');
+            setName('');
         }
-
-        setEmail('');
-        setMessage('');
-        setName('');
-        setError('false')
-        
+        setIsLoading(false);        
     }
 
     return (
-        <div className="contact" onSubmit={handleSubmit}>
-            <form>
-                <label>Name</label>
-                <br />
-                <input type="text" 
+        <div className="contact">
+            <Heading as='h4' size='lg'>Contact Me</Heading>
+            <FormControl isRequired>
+                <FormLabel>Name</FormLabel>
+                <Input type="text"
+                    id="name"
                     onChange={(e) => setName(e.target.value)}
-                    value={name}                />
-                <br />
-                <label>Email </label>
-                <br />
-                <input type="email" 
+                    value={name}
+                    variant='filled'
+                />
+                <FormLabel>Email </FormLabel>
+                <Input type="email"
+                    id="email" 
                     onChange={(e) => setEmail(e.target.value)}
-                    value={email}                />
-                <br />
-                <label>Message </label>
-                <br />
-                <textarea 
+                    value={email}
+                    variant='filled'                />
+                <FormLabel>Message </FormLabel>
+                <Textarea
+                    id="message"
+                    placeholder="Write your message here..." 
                     onChange={(e) => setMessage(e.target.value)}
                     value={message}
+                    variant='filled'
                 />
-                <br />
-                <button >Submit</button>
-                <div className="toast">
-                <ToastContainer />
-                </div>
-            </form>
+                {isLoading && <Button isLoading loadingText="Submitting" mt='4' colorScheme='blue' size='lg'>Submit</Button>}
+                {!isLoading && <Button mt='4' colorScheme='blue' onClick={handleSubmit} size='lg'>Submit</Button>}
+            </FormControl>
         </div>
     )
 }
