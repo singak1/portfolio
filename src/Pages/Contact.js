@@ -1,12 +1,21 @@
 import { useState } from "react"
-import { toast, ToastContainer } from "react-toastify"
-import 'react-toastify/dist/ReactToastify.css';
+import  {   FormControl, 
+            FormLabel, 
+            FormErrorMessage, 
+            Input, 
+            Textarea, 
+            Heading, 
+            Button,
+            useToast
+        } from "@chakra-ui/react";
 
 const Contact = () => {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+    const toast = useToast();
 
     const formValidation = () => {
         let error = true;
@@ -16,52 +25,66 @@ const Contact = () => {
         return error;
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
+        setIsLoading(true);
         e.preventDefault();
         let error = formValidation();
         if(error) {
-            toast.error('Please fill out the all the components', {
-                position: "bottom-center",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: false,
-                pauseOnHover: true,
-                draggable: false,
-                progress: undefined,
-                theme: "colored",
-                });
+            toast({
+                title: 'Incomplete Form.',
+                description: "Please fill out all the inputs!",
+                status: 'error',
+                duration: 3000,
+                isClosable: true,
+            })
         }
         else {
+            await new Promise( r => setTimeout(r, 6000));
+            toast({
+                size:'lg',
+                title: "Thank you for your inquiry",
+                description: "I will get back to you at the specified email ASAP",
+                status: 'success',
+                duration: 3000,
+                isClosable: true,
+            })
             const contactData = {name, email, message}
             console.log(contactData);
             setEmail('');
             setMessage('');
             setName('');
-        }        
+        }
+        setIsLoading(false);        
     }
 
     return (
-        <div className="contact" onSubmit={handleSubmit}>
-            <h2>Contact Me</h2>
-            <form>
-                <label>Name</label>
-                <input type="text" 
+        <div className="contact">
+            <Heading as='h4' size='lg'>Contact Me</Heading>
+            <FormControl isRequired>
+                <FormLabel>Name</FormLabel>
+                <Input type="text"
+                    id="name"
                     onChange={(e) => setName(e.target.value)}
-                    value={name}                />
-                <label>Email </label>
-                <input type="email" 
+                    value={name}
+                    variant='filled'
+                />
+                <FormLabel>Email </FormLabel>
+                <Input type="email"
+                    id="email" 
                     onChange={(e) => setEmail(e.target.value)}
-                    value={email}                />
-                <label>Message </label>
-                <textarea 
+                    value={email}
+                    variant='filled'                />
+                <FormLabel>Message </FormLabel>
+                <Textarea
+                    id="message"
+                    placeholder="Write your message here..." 
                     onChange={(e) => setMessage(e.target.value)}
                     value={message}
+                    variant='filled'
                 />
-                <button >Submit</button>
-                <div className="toast">
-                <ToastContainer />
-                </div>
-            </form>
+                {isLoading && <Button isLoading loadingText="Submitting" mt='4' colorScheme='blue' size='lg'>Submit</Button>}
+                {!isLoading && <Button mt='4' colorScheme='blue' onClick={handleSubmit} size='lg'>Submit</Button>}
+            </FormControl>
         </div>
     )
 }
