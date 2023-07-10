@@ -1,15 +1,19 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import  {   FormControl, 
             FormLabel, 
-            FormErrorMessage, 
             Input, 
             Textarea, 
             Heading, 
             Button,
             useToast
         } from "@chakra-ui/react";
+import emailjs from "@emailjs/browser";
 
 const Contact = () => {
+    //Set the title of the page dynamically
+    useEffect(() => {
+        document.title = "Contact";
+    }, [])
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,7 +21,7 @@ const Contact = () => {
     const [isLoading, setIsLoading] = useState(false);
     const toast = useToast();
 
-    const formValidation = () => {
+    const formValidation = async () => {
         let error = true;
         if(name.length >= 1 && email.length >= 1 && message.length >= 1) {
             error = false
@@ -28,7 +32,17 @@ const Contact = () => {
     const handleSubmit = async (e) => {
         setIsLoading(true);
         e.preventDefault();
-        let error = formValidation();
+        let error = await formValidation();
+        const serviceKey = process.env.REACT_APP_SERVICE_KEY;
+        const templateKey = process.env.REACT_APP_TEMPLATE_KEY;
+        const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+        const emailParams = {
+            to_name: "Akash",
+            from_name: name,
+            msg: message,
+            from_email: email,
+        };
+
         if(error) {
             toast({
                 title: 'Incomplete Form.',
@@ -39,10 +53,16 @@ const Contact = () => {
             })
         }
         else {
-            await new Promise( r => setTimeout(r, 6000));
+            await emailjs.send(serviceKey, templateKey, emailParams, publicKey)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
             toast({
                 size:'lg',
-                title: "Thank you for your inquiry",
+                title: "Thank you for your inquiry!",
                 description: "I will get back to you at the specified email ASAP",
                 status: 'success',
                 duration: 3000,

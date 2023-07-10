@@ -1,8 +1,13 @@
 import Skills from "../Components/Skills"
 import AboutMe from "../Components/AboutMe"
 import { Heading, Text } from "@chakra-ui/react"
+import { useEffect } from "react"
 
 const Home = () => {
+    useEffect(() => {
+        document.title = "Akash's Portfolio"
+    }, [])
+
     return (
         <div className="home">
             <Heading as='h2' size='lg'>Akash's Porfoilo</Heading>
