@@ -29,45 +29,65 @@ const Contact = () => {
         return error;
     }
 
+    const sendEmail = async (emailParams) => {
+        let emailError = false;
+        const serviceKey = process.env.REACT_APP_SERVICE_KEY;
+        const templateKey = process.env.REACT_APP_TEMPLATE_KEY;
+        const publicKey = process.env.REACT_APP_PUBLIC_KEY;
+        await emailjs.send(serviceKey, templateKey, emailParams, publicKey)
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((err) => {
+                    emailError = true;
+                    console.log("There was an error");
+                });
+        return emailError;
+    }
+
     const handleSubmit = async (e) => {
         setIsLoading(true);
         e.preventDefault();
         let error = await formValidation();
-        const serviceKey = process.env.REACT_APP_SERVICE_KEY;
-        const templateKey = process.env.REACT_APP_TEMPLATE_KEY;
-        const publicKey = process.env.REACT_APP_PUBLIC_KEY;
-        const emailParams = {
-            to_name: "Akash",
-            from_name: name,
-            msg: message,
-            from_email: email,
-        };
 
         if(error) {
             toast({
                 title: 'Incomplete Form.',
                 description: "Please fill out all the inputs!",
                 status: 'error',
-                duration: 3000,
+                duration: 4000,
                 isClosable: true,
             })
         }
         else {
-            await emailjs.send(serviceKey, templateKey, emailParams, publicKey)
-                .then((response) => {
-                    console.log(response);
-                })
-                .catch((err) => {
-                    console.log(err);
-                });
-            toast({
-                size:'lg',
-                title: "Thank you for your inquiry!",
-                description: "I will get back to you at the specified email ASAP",
-                status: 'success',
-                duration: 3000,
-                isClosable: true,
-            })
+                const emailParams = {
+                    to_name: "Akash",
+                    from_name: name,
+                    msg: message,
+                    from_email: email,
+                };
+                let emailError = await sendEmail(emailParams);
+                console.log(emailError);
+                if( emailError ) {
+                    toast({
+                        size:'lg',
+                        title: "Error sending email",
+                        description: "Sorry, connect with me through my socials in the meantime",
+                        status: 'error',
+                        duration: 4000,
+                        isClosable: true,
+                    })
+                }
+                else {
+                    toast({
+                        size:'lg',
+                        title: "Thank you for your inquiry!",
+                        description: "I will get back to you at the specified email ASAP",
+                        status: 'success',
+                        duration: 3000,
+                        isClosable: true,
+                    })
+                }
             const contactData = {name, email, message}
             console.log(contactData);
             setEmail('');
