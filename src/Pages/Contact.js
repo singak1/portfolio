@@ -9,6 +9,7 @@ import  {   FormControl,
             Stack
         } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
+import Navbar from "../Components/Navbar";
 
 const Contact = () => {
     //Set the title of the page dynamically
@@ -99,7 +100,9 @@ const Contact = () => {
     }
 
     return (
+        
         <div className="contact">
+            <Navbar />
             <Stack w={['100%', '75%', '50%']} alignContent='space-around' m='auto'>
             <Heading as='h4' size='lg'>Contact Me</Heading>
             <FormControl isRequired>
