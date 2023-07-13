@@ -13,7 +13,7 @@ const Home = () => {
         <div className="home">
             <Navbar />
             <div className="home-content" >
-                <Stack w={['100%', '75%', '50%']} alignContent='space-around' m='auto'>
+                <Stack w={['100%', '75%', '85%']} alignContent='space-between' m='auto'>
                 <Heading as='h2' size='lg' p='2'>Akash's Porfoilo</Heading>
                 <AboutMe />
                 <Heading as='h4' size='lg' pt='4'>Education</Heading>
