@@ -5,7 +5,8 @@ import  {   FormControl,
             Textarea, 
             Heading, 
             Button,
-            useToast
+            useToast,
+            Stack
         } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 
@@ -99,6 +100,7 @@ const Contact = () => {
 
     return (
         <div className="contact">
+            <Stack w={['100%', '75%', '50%']} alignContent='space-around' m='auto'>
             <Heading as='h4' size='lg'>Contact Me</Heading>
             <FormControl isRequired>
                 <FormLabel>Name</FormLabel>
@@ -121,10 +123,12 @@ const Contact = () => {
                     onChange={(e) => setMessage(e.target.value)}
                     value={message}
                     variant='filled'
+                    minH={['180']}
                 />
                 {isLoading && <Button isLoading loadingText="Submitting" mt='4' colorScheme='blue' size='lg'>Submit</Button>}
                 {!isLoading && <Button mt='4' colorScheme='blue' onClick={handleSubmit} size='lg'>Submit</Button>}
             </FormControl>
+            </Stack>
         </div>
     )
 }
