@@ -1,4 +1,4 @@
-import { Icon, Stack, Text, VStack, HStack, Link } from "@chakra-ui/react";
+import { Icon, Text, VStack, HStack, Link } from "@chakra-ui/react";
 import { BsFillHeartFill, BsGithub, BsLinkedin } from "react-icons/bs"
 import { SiVercel } from "react-icons/si";
 

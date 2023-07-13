@@ -103,35 +103,37 @@ const Contact = () => {
         
         <div className="contact">
             <Navbar />
-            <Stack w={['100%', '75%', '50%']} alignContent='space-around' m='auto'>
-            <Heading as='h4' size='lg' p='2'>Contact Me</Heading>
-            <FormControl isRequired>
-                <FormLabel>Name</FormLabel>
-                <Input type="text"
-                    id="name"
-                    onChange={(e) => setName(e.target.value)}
-                    value={name}
-                    variant='filled'
-                />
-                <FormLabel>Email </FormLabel>
-                <Input type="email"
-                    id="email" 
-                    onChange={(e) => setEmail(e.target.value)}
-                    value={email}
-                    variant='filled'                />
-                <FormLabel>Message </FormLabel>
-                <Textarea
-                    id="message"
-                    placeholder="Write your message here..." 
-                    onChange={(e) => setMessage(e.target.value)}
-                    value={message}
-                    variant='filled'
-                    minH={['180']}
-                />
-                {isLoading && <Button isLoading loadingText="Submitting" mt='4' mb='2' colorScheme='blue' size='lg'>Submit</Button>}
-                {!isLoading && <Button mt='4' mb='2' colorScheme='blue' onClick={handleSubmit} size='lg'>Submit</Button>}
-            </FormControl>
-            </Stack>
+            <div className="contact-content">
+                <Stack w={['100%', '75%', '50%']} alignContent='space-around' m='auto'>
+                <Heading as='h4' size='lg' p='2'>Contact Me</Heading>
+                <FormControl isRequired>
+                    <FormLabel>Name</FormLabel>
+                    <Input type="text"
+                        id="name"
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}
+                        variant='filled'
+                    />
+                    <FormLabel>Email </FormLabel>
+                    <Input type="email"
+                        id="email" 
+                        onChange={(e) => setEmail(e.target.value)}
+                        value={email}
+                        variant='filled'                />
+                    <FormLabel>Message </FormLabel>
+                    <Textarea
+                        id="message"
+                        placeholder="Write your message here..." 
+                        onChange={(e) => setMessage(e.target.value)}
+                        value={message}
+                        variant='filled'
+                        minH={['180']}
+                    />
+                    {isLoading && <Button isLoading loadingText="Submitting" mt='4' mb='2' colorScheme='blue' size='lg'>Submit</Button>}
+                    {!isLoading && <Button mt='4' mb='2' colorScheme='blue' onClick={handleSubmit} size='lg'>Submit</Button>}
+                </FormControl>
+                </Stack>
+            </div>
         </div>
     )
 }
