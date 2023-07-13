@@ -4,8 +4,7 @@ import { SiVercel } from "react-icons/si";
 
 const Footer = () => {
     return(
-        <Stack>
-            <VStack minWidth='max-content' alignContent='center'>
+            <VStack minWidth='max-content' alignContent='center' gap='6' mt='10'>
                 <HStack>
                     <Text>Proudly made with</Text>
                     <Icon as={BsFillHeartFill} color='red.500'/>
@@ -16,10 +15,9 @@ const Footer = () => {
                     <Link href="https://www.linkedin.com/in/singak1/" isExternal><Icon as={BsLinkedin} boxSize={6} color='gray.400'/></Link>
                 </HStack>
                 <HStack mb={2}>
-                    <Text fontSize='sm' as='b' borderRadius='5' backgroundColor='black' color='white' padding='2' mt='5'>Deployed on <Icon as={SiVercel} color='white' /> Vercel</Text>
+                    <Text fontSize='sm' as='b' borderRadius='5' backgroundColor='black' color='white' padding='2'>Deployed on <Icon as={SiVercel} color='white' /> Vercel</Text>
                 </HStack>
             </VStack>
-        </Stack>
     )
 }
 
