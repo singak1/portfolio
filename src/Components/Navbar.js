@@ -5,7 +5,7 @@ import { BsSunFill, BsMoonFill } from "react-icons/bs"
 const Navbar = () => {
     const { colorMode, toggleColorMode } = useColorMode()
     return (
-        <Flex minWidth='max-content' alignItems='center' gap='2' padding='4' borderBottom='2px' borderBottomColor='GrayText'>
+        <Flex minWidth='max-content' alignItems='center' gap='2' padding='4' borderBottom='2px' borderBottomColor='GrayText' position='sticky' top='0' backdropFilter='blur(6px)' backdropBlur='blur(6px)'>
             <Link to="/"><Heading as='h4' size='md' mr="4">Home</Heading></Link>
             <Link to="/contact"><Heading as='h4' size='md'>Contact</Heading></Link>
             <Spacer />

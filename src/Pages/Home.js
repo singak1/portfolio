@@ -1,7 +1,8 @@
 import Skills from "../Components/Skills"
 import AboutMe from "../Components/AboutMe"
-import { Heading, Text } from "@chakra-ui/react"
+import { Heading, Stack, Text } from "@chakra-ui/react"
 import { useEffect } from "react"
+import Navbar from "../Components/Navbar"
 
 const Home = () => {
     useEffect(() => {
@@ -10,7 +11,9 @@ const Home = () => {
 
     return (
         <div className="home">
-            <Heading as='h2' size='lg'>Akash's Porfoilo</Heading>
+            <Navbar />
+            <Stack w={['100%', '75%', '50%']} alignContent='space-around' m='auto'>
+            <Heading as='h2' size='lg' p='2'>Akash's Porfoilo</Heading>
             <AboutMe />
             <Heading as='h4' size='lg' pt='4'>Education</Heading>
             <Text fontSize='lg'>Bachelor's of Science in Computer Science @ NJIT, Newark NJ</Text>
@@ -19,10 +22,8 @@ const Home = () => {
             <Heading as='h4' size='lg' p='4'>Personal Projects</Heading>
             <Heading as='h6' size='md'>Airbnb Clone</Heading>
             <p>Created a clone of Airbnb, used modern webdev techniques. Clone was made using the MERN stack.</p>
-            <div className="skillset">
-                SPACE FOR SKILL LOGOS
-                <Skills />
-            </div>
+            <Skills />
+            </Stack>
         </div>
     )
 }
